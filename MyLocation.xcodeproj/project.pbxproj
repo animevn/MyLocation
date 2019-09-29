@@ -8,21 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		F16871B92340976D00CE4069 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16871B82340976D00CE4069 /* AppDelegate.swift */; };
-		F16871BB2340976D00CE4069 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16871BA2340976D00CE4069 /* FirstViewController.swift */; };
-		F16871BD2340976D00CE4069 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16871BC2340976D00CE4069 /* SecondViewController.swift */; };
+		F16871BB2340976D00CE4069 /* FirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16871BA2340976D00CE4069 /* FirstVC.swift */; };
+		F16871BD2340976D00CE4069 /* SecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16871BC2340976D00CE4069 /* SecondVC.swift */; };
 		F16871C02340976D00CE4069 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F16871BE2340976D00CE4069 /* Main.storyboard */; };
 		F16871C22340976E00CE4069 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F16871C12340976E00CE4069 /* Assets.xcassets */; };
-		F16871C52340976E00CE4069 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F16871C32340976E00CE4069 /* LaunchScreen.storyboard */; };
+		F16871C52340976E00CE4069 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F16871C32340976E00CE4069 /* Launch.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F16871B52340976D00CE4069 /* MyLocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F16871B82340976D00CE4069 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F16871BA2340976D00CE4069 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		F16871BC2340976D00CE4069 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		F16871BA2340976D00CE4069 /* FirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstVC.swift; sourceTree = "<group>"; };
+		F16871BC2340976D00CE4069 /* SecondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondVC.swift; sourceTree = "<group>"; };
 		F16871BF2340976D00CE4069 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F16871C12340976E00CE4069 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F16871C42340976E00CE4069 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F16871C42340976E00CE4069 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Launch.storyboard; sourceTree = "<group>"; };
 		F16871C62340976E00CE4069 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,11 +57,11 @@
 			isa = PBXGroup;
 			children = (
 				F16871B82340976D00CE4069 /* AppDelegate.swift */,
-				F16871BA2340976D00CE4069 /* FirstViewController.swift */,
-				F16871BC2340976D00CE4069 /* SecondViewController.swift */,
+				F16871BA2340976D00CE4069 /* FirstVC.swift */,
+				F16871BC2340976D00CE4069 /* SecondVC.swift */,
 				F16871BE2340976D00CE4069 /* Main.storyboard */,
+				F16871C32340976E00CE4069 /* Launch.storyboard */,
 				F16871C12340976E00CE4069 /* Assets.xcassets */,
-				F16871C32340976E00CE4069 /* LaunchScreen.storyboard */,
 				F16871C62340976E00CE4069 /* Info.plist */,
 			);
 			path = MyLocation;
@@ -125,7 +125,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F16871C52340976E00CE4069 /* LaunchScreen.storyboard in Resources */,
+				F16871C52340976E00CE4069 /* Launch.storyboard in Resources */,
 				F16871C22340976E00CE4069 /* Assets.xcassets in Resources */,
 				F16871C02340976D00CE4069 /* Main.storyboard in Resources */,
 			);
@@ -138,9 +138,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F16871BD2340976D00CE4069 /* SecondViewController.swift in Sources */,
+				F16871BD2340976D00CE4069 /* SecondVC.swift in Sources */,
 				F16871B92340976D00CE4069 /* AppDelegate.swift in Sources */,
-				F16871BB2340976D00CE4069 /* FirstViewController.swift in Sources */,
+				F16871BB2340976D00CE4069 /* FirstVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,12 +155,12 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		F16871C32340976E00CE4069 /* LaunchScreen.storyboard */ = {
+		F16871C32340976E00CE4069 /* Launch.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F16871C42340976E00CE4069 /* Base */,
 			);
-			name = LaunchScreen.storyboard;
+			name = Launch.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -288,6 +288,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MyLocation/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -295,7 +296,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.haanhgs.MyLocation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -305,6 +306,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MyLocation/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -312,7 +314,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.haanhgs.MyLocation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
