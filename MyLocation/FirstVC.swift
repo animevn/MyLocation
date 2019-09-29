@@ -11,12 +11,44 @@ class CurrentLocationVC: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var bnGet: UIButton!
     
     let manager = CLLocationManager()
-    var location:CLLocation?
+    var newLocation:CLLocation?
+    var updateLocation = false
+    var lastLocationError:Error?
     
+    private func updateViews(){
+        if let location = newLocation{
+            lbLattitude.text = String(format: "%.5f", location.coordinate.latitude)
+            lbLongtitude.text = String(format: "%.5f", location.coordinate.longitude)
+            bnTag.isHidden = false
+            lbMessage.text = ""
+        }else{
+            lbLongtitude.text = ""
+            lbLattitude.text = ""
+            lbAddress.text = ""
+            bnTag.isHidden = true
+            
+            let statusMessage: String
+            if let error = lastLocationError as NSError? {
+                if error.domain == kCLErrorDomain
+                    && error.code == CLError.denied.rawValue {
+                    statusMessage = "Location Services Disabled"
+                } else {
+                    statusMessage = "Error Getting Location"
+                }
+            } else if !CLLocationManager.locationServicesEnabled() {
+                statusMessage = "Location Services Disabled"
+            } else if updateLocation {
+                statusMessage = "Searching..."
+            } else {
+                statusMessage = "Tap 'Get My Location' to Start"
+            }
+            lbMessage.text = statusMessage
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        updateViews()
     }
     
     private func showLocationServicesDeniedAlert(){
@@ -28,11 +60,25 @@ class CurrentLocationVC: UIViewController, CLLocationManagerDelegate {
         alert.addAction(ok)
         present(alert, animated: true, completion: nil)
     }
+    
+    private func startLocationManager(){
+        if CLLocationManager.locationServicesEnabled(){
+            manager.delegate = self
+            manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            manager.startUpdatingLocation()
+            updateLocation = true
+        }
+    }
+    
+    private func stopLocationManager(){
+        if updateLocation{
+            manager.stopUpdatingLocation()
+            manager.delegate = nil
+            updateLocation = false
+        }
+    }
 
-    @IBAction func getLocation(_ sender: UIButton) {
-        manager.delegate = self
-        manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        manager.startUpdatingLocation()
+    @IBAction func getLocation() {
         let authStatus = CLLocationManager.authorizationStatus()
         
         if authStatus == .notDetermined {
@@ -44,29 +90,23 @@ class CurrentLocationVC: UIViewController, CLLocationManagerDelegate {
             showLocationServicesDeniedAlert()
             return
         }
+        startLocationManager()
+        updateViews()
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
+        if (error as NSError).code == CLError.locationUnknown.rawValue{return}
+        lastLocationError = error
+        stopLocationManager()
+        updateViews()
     }
     
-    private func updateViews(){
-        if let location = location{
-            lbLattitude.text = String(format: "%.5f", location.coordinate.latitude)
-            lbLongtitude.text = String(format: "%.5f", location.coordinate.longitude)
-            bnTag.isHidden = false
-            lbMessage.text = ""
-        }else{
-            lbLongtitude.text = ""
-            lbLattitude.text = ""
-            lbAddress.text = ""
-            bnTag.isHidden = true
-            lbMessage.text = "Tap 'Get My Location' to start"
-        }
-    }
+    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations:[CLLocation]){
-        location = locations.last!
+        newLocation = locations.last!
+        print("lat: \(newLocation!.coordinate.latitude) lon: \(newLocation!.coordinate.longitude)")
+        
         updateViews()
     }
     
