@@ -51,8 +51,8 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     }
     
     private func updateLabelsWhenLocationFound(location:CLLocation){
-        lbLattitude.text = String(format: "%.5f", location.coordinate.latitude)
-        lbLongtitude.text = String(format: "%.5f", location.coordinate.longitude)
+        lbLattitude.text = String(format: "%.8f", location.coordinate.latitude)
+        lbLongtitude.text = String(format: "%.8f", location.coordinate.longitude)
         bnTag.isHidden = false
         lbMessage.text = ""
         updateAddressLabel()
