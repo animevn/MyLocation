@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		F10EF4392340E33800AC28F9 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10EF4382340E33800AC28F9 /* Repo.swift */; };
 		F16871B92340976D00CE4069 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16871B82340976D00CE4069 /* AppDelegate.swift */; };
-		F16871BB2340976D00CE4069 /* FirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16871BA2340976D00CE4069 /* FirstVC.swift */; };
+		F16871BB2340976D00CE4069 /* CurrentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16871BA2340976D00CE4069 /* CurrentLocation.swift */; };
 		F16871BD2340976D00CE4069 /* SecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16871BC2340976D00CE4069 /* SecondVC.swift */; };
 		F16871C02340976D00CE4069 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F16871BE2340976D00CE4069 /* Main.storyboard */; };
 		F16871C22340976E00CE4069 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F16871C12340976E00CE4069 /* Assets.xcassets */; };
@@ -20,7 +20,7 @@
 		F10EF4382340E33800AC28F9 /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		F16871B52340976D00CE4069 /* MyLocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F16871B82340976D00CE4069 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F16871BA2340976D00CE4069 /* FirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstVC.swift; sourceTree = "<group>"; };
+		F16871BA2340976D00CE4069 /* CurrentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocation.swift; sourceTree = "<group>"; };
 		F16871BC2340976D00CE4069 /* SecondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondVC.swift; sourceTree = "<group>"; };
 		F16871BF2340976D00CE4069 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F16871C12340976E00CE4069 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -59,7 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				F16871B82340976D00CE4069 /* AppDelegate.swift */,
-				F16871BA2340976D00CE4069 /* FirstVC.swift */,
+				F16871BA2340976D00CE4069 /* CurrentLocation.swift */,
 				F10EF4382340E33800AC28F9 /* Repo.swift */,
 				F16871BC2340976D00CE4069 /* SecondVC.swift */,
 				F16871BE2340976D00CE4069 /* Main.storyboard */,
@@ -143,7 +143,7 @@
 			files = (
 				F16871BD2340976D00CE4069 /* SecondVC.swift in Sources */,
 				F16871B92340976D00CE4069 /* AppDelegate.swift in Sources */,
-				F16871BB2340976D00CE4069 /* FirstVC.swift in Sources */,
+				F16871BB2340976D00CE4069 /* CurrentLocation.swift in Sources */,
 				F10EF4392340E33800AC28F9 /* Repo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
