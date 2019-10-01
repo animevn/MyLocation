@@ -15,6 +15,7 @@ class LocationDetailViewController:UITableViewController{
     var placemark:CLPlacemark!
     var categoryName = "Apple Store"
     
+    var managedObjectContext:NSManagedObjectContext!
     
     private func updateLabels(){
         

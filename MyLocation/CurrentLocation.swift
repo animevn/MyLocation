@@ -200,6 +200,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             else {return}
             controller.coord = location.coordinate
             controller.placemark = placemark
+            controller.managedObjectContext = managedObjectContext
         }
     }
 }
