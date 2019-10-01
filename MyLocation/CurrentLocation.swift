@@ -30,10 +30,8 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             lbAddress.text = "Searching for place ..."
         }else if geocoderError != nil{
             lbAddress.text = "Error searching for place ..."
-        }else if !isSeachingLocation{
-            lbAddress.text = ""
         }else{
-            lbAddress.text = "Place not found"
+            lbAddress.text = ""
         }
     }
     

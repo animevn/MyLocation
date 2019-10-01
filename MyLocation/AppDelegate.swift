@@ -55,6 +55,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let tabBarViewControllers = controller.viewControllers{
             let currentLocation = tabBarViewControllers[0] as! CurrentLocationViewController
             currentLocation.managedObjectContext = managedObjectContext
+            let navigation = tabBarViewControllers[1] as! UINavigationController
+            let locationList = navigation.viewControllers[0] as! LocationsViewController
+            locationList.managedObjectContext = managedObjectContext
         }
         print(appSupportDirectory)
         return true
