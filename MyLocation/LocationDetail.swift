@@ -60,6 +60,9 @@ class LocationDetailViewController:UITableViewController{
     @IBAction func onDone(_ sender: UIBarButtonItem) {
         let hudView = HudView.hud(view: navigationController!.view, animated: true)
         hudView.text = "Tagg"
+        executeAfter(seconds: 0.6){
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func pickCategory(_ segue: UIStoryboardSegue){
@@ -82,4 +85,17 @@ class LocationDetailViewController:UITableViewController{
         }
     }
     
+    override func tableView(_ tableView:UITableView, heightForRowAt indexPath:IndexPath)->CGFloat{
+        if indexPath.section == 0 && indexPath.row == 0{
+            return 90
+        }else if indexPath.section == 2 && indexPath.row == 2{
+            lbAddress.frame.size = CGSize(width: view.bounds.size.width - 115, height: 10000)
+            lbAddress.sizeToFit()
+            lbAddress.frame.origin.x = view.bounds.size.width - lbAddress.frame.size.width - 15
+            return lbAddress.frame.size.height + 20
+        }else{
+            return 44
+        }
+        
+    }
 }

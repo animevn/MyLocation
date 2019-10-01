@@ -27,3 +27,7 @@ func format(date:Date)->String{
     dateFormatter.timeStyle = .short
     return dateFormatter.string(from: date)
 }
+
+func executeAfter(seconds: Double, completion:@escaping ()->Void){
+    DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: completion)
+}
