@@ -1,5 +1,6 @@
 import UIKit
 import CoreLocation
+import CoreData
 
 class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -19,6 +20,8 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     var placemark:CLPlacemark?
     var isReversingGeocoder = false
     var geocoderError:Error?
+    
+    var managedObjectContext:NSManagedObjectContext!
     
     private func updateAddressLabel(){
         if let placemark = placemark{

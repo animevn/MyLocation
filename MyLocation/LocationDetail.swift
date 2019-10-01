@@ -1,5 +1,6 @@
 import UIKit
 import CoreLocation
+import CoreData
 
 class LocationDetailViewController:UITableViewController{
     
