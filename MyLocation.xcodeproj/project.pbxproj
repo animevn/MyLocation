@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F10DAA962343384B002C63D0 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F10DAA942343384B002C63D0 /* Model.xcdatamodeld */; };
-		F10DAA9D23434459002C63D0 /* CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10DAA9B23434459002C63D0 /* CoreDataClass.swift */; };
-		F10DAA9E23434459002C63D0 /* CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10DAA9C23434459002C63D0 /* CoreDataProperties.swift */; };
+		F10DAAA12343569B002C63D0 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F10DAA9F2343569B002C63D0 /* Model.xcdatamodeld */; };
+		F10DAAA423435769002C63D0 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10DAAA223435769002C63D0 /* Location+CoreDataClass.swift */; };
+		F10DAAA523435769002C63D0 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10DAAA323435769002C63D0 /* Location+CoreDataProperties.swift */; };
 		F10EF4392340E33800AC28F9 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10EF4382340E33800AC28F9 /* Repo.swift */; };
 		F16871B92340976D00CE4069 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16871B82340976D00CE4069 /* AppDelegate.swift */; };
 		F16871BB2340976D00CE4069 /* CurrentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16871BA2340976D00CE4069 /* CurrentLocation.swift */; };
@@ -23,9 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F10DAA952343384B002C63D0 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		F10DAA9B23434459002C63D0 /* CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataClass.swift; sourceTree = "<group>"; };
-		F10DAA9C23434459002C63D0 /* CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProperties.swift; sourceTree = "<group>"; };
+		F10DAAA02343569B002C63D0 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		F10DAAA223435769002C63D0 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F10DAAA323435769002C63D0 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F10EF4382340E33800AC28F9 /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		F16871B52340976D00CE4069 /* MyLocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F16871B82340976D00CE4069 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,8 +71,6 @@
 			isa = PBXGroup;
 			children = (
 				F16871B82340976D00CE4069 /* AppDelegate.swift */,
-				F10DAA9B23434459002C63D0 /* CoreDataClass.swift */,
-				F10DAA9C23434459002C63D0 /* CoreDataProperties.swift */,
 				F16871BA2340976D00CE4069 /* CurrentLocation.swift */,
 				F18BA0472342547F00E4F85B /* LocationDetail.swift */,
 				F193F6E12342E173008483F9 /* CategoryPicker.swift */,
@@ -82,8 +80,10 @@
 				F16871BE2340976D00CE4069 /* Main.storyboard */,
 				F16871C32340976E00CE4069 /* Launch.storyboard */,
 				F16871C12340976E00CE4069 /* Assets.xcassets */,
-				F10DAA942343384B002C63D0 /* Model.xcdatamodeld */,
 				F16871C62340976E00CE4069 /* Info.plist */,
+				F10DAAA223435769002C63D0 /* Location+CoreDataClass.swift */,
+				F10DAAA323435769002C63D0 /* Location+CoreDataProperties.swift */,
+				F10DAA9F2343569B002C63D0 /* Model.xcdatamodeld */,
 			);
 			path = MyLocation;
 			sourceTree = "<group>";
@@ -162,11 +162,11 @@
 				F16871BD2340976D00CE4069 /* SecondViewVC.swift in Sources */,
 				F16871B92340976D00CE4069 /* AppDelegate.swift in Sources */,
 				F16871BB2340976D00CE4069 /* CurrentLocation.swift in Sources */,
-				F10DAA962343384B002C63D0 /* Model.xcdatamodeld in Sources */,
-				F10DAA9E23434459002C63D0 /* CoreDataProperties.swift in Sources */,
+				F10DAAA12343569B002C63D0 /* Model.xcdatamodeld in Sources */,
+				F10DAAA523435769002C63D0 /* Location+CoreDataProperties.swift in Sources */,
 				F10EF4392340E33800AC28F9 /* Repo.swift in Sources */,
 				F18BA0482342547F00E4F85B /* LocationDetail.swift in Sources */,
-				F10DAA9D23434459002C63D0 /* CoreDataClass.swift in Sources */,
+				F10DAAA423435769002C63D0 /* Location+CoreDataClass.swift in Sources */,
 				F193F6E42343050C008483F9 /* HudView.swift in Sources */,
 				F193F6E22342E173008483F9 /* CategoryPicker.swift in Sources */,
 			);
@@ -370,12 +370,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		F10DAA942343384B002C63D0 /* Model.xcdatamodeld */ = {
+		F10DAA9F2343569B002C63D0 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				F10DAA952343384B002C63D0 /* Model.xcdatamodel */,
+				F10DAAA02343569B002C63D0 /* Model.xcdatamodel */,
 			);
-			currentVersion = F10DAA952343384B002C63D0 /* Model.xcdatamodel */;
+			currentVersion = F10DAAA02343569B002C63D0 /* Model.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

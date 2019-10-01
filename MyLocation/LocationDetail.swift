@@ -4,7 +4,7 @@ import CoreData
 
 class LocationDetailViewController:UITableViewController{
     
-    @IBOutlet weak var lbDescription: UITextView!
+    @IBOutlet weak var tvDescription: UITextView!
     @IBOutlet weak var lbCategory: UILabel!
     @IBOutlet weak var lbLatitude: UILabel!
     @IBOutlet weak var lbLongtitude: UILabel!
@@ -14,12 +14,13 @@ class LocationDetailViewController:UITableViewController{
     var coord:CLLocationCoordinate2D!
     var placemark:CLPlacemark!
     var categoryName = "Apple Store"
+    var date = Date()
     
     var managedObjectContext:NSManagedObjectContext!
     
     private func updateLabels(){
         
-        lbDescription.text = ""
+        tvDescription.text = ""
         lbLatitude.text = String(format: "%.8f", coord.latitude)
         lbLongtitude.text = String(format: "%.8f", coord.longitude)
         lbAddress.text = string(from: placemark)
@@ -33,7 +34,7 @@ class LocationDetailViewController:UITableViewController{
         if indexPath != nil && indexPath!.section == 0 && indexPath?.row == 0{
             return
         }
-        lbDescription.resignFirstResponder()
+        tvDescription.resignFirstResponder()
     }
     
     override func viewDidLoad() {
@@ -59,12 +60,30 @@ class LocationDetailViewController:UITableViewController{
         dismiss(animated: true, completion: nil)
     }
     
+    private func saveLocation(){
+        let location = Location(context: managedObjectContext)
+        location.locationDescription = tvDescription.text
+        location.category = categoryName
+        location.latitude = coord.latitude
+        location.longtitude = coord.longitude
+        location.date = date
+        location.placemark = placemark
+    }
+    
     @IBAction func onDone(_ sender: UIBarButtonItem) {
         let hudView = HudView.hud(view: navigationController!.view, animated: true)
         hudView.text = "Tagg"
-        executeAfter(seconds: 0.6){
-            self.dismiss(animated: true, completion: nil)
+        
+        saveLocation()
+        do{
+            try managedObjectContext.save()
+            executeAfter(seconds: 0.6){
+                self.dismiss(animated: true, completion: nil)
+            }
+        }catch let error{
+            print(error)
         }
+        
     }
     
     @IBAction func pickCategory(_ segue: UIStoryboardSegue){
@@ -83,7 +102,7 @@ class LocationDetailViewController:UITableViewController{
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 && indexPath.row == 0{
-            lbDescription.becomeFirstResponder()
+            tvDescription.becomeFirstResponder()
         }
     }
     

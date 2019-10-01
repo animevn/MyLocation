@@ -31,3 +31,7 @@ func format(date:Date)->String{
 func executeAfter(seconds: Double, completion:@escaping ()->Void){
     DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: completion)
 }
+
+let appSupportDirectory:URL = {
+    return FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+}()

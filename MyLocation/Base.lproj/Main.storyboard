@@ -317,9 +317,9 @@
                         <outlet property="lbAddress" destination="dv0-Y5-uMl" id="8Z4-eL-w5A"/>
                         <outlet property="lbCategory" destination="LUQ-wz-j6k" id="xyh-a4-c1b"/>
                         <outlet property="lbDate" destination="h2r-hN-1H0" id="H7d-VJ-NaY"/>
-                        <outlet property="lbDescription" destination="CRH-DV-96w" id="wSU-xW-G6S"/>
                         <outlet property="lbLatitude" destination="zvR-lS-jYN" id="ds4-Gj-odu"/>
                         <outlet property="lbLongtitude" destination="fWF-rl-Dra" id="fh3-oX-4vi"/>
+                        <outlet property="tvDescription" destination="CRH-DV-96w" id="nsl-xh-yR9"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mha-9S-WZG" userLabel="First Responder" sceneMemberID="firstResponder"/>
