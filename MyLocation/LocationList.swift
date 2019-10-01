@@ -42,7 +42,7 @@ class LocationsViewController:UITableViewController{
         
         lbDescription.text = location.locationDescription
         if let placemark = location.placemark{
-            lbAddress.text = string(from: placemark as! CLPlacemark)
+            lbAddress.text = string(from: placemark)
         }else{
             lbAddress.text = ""
         }
@@ -56,5 +56,27 @@ class LocationsViewController:UITableViewController{
     }
     
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editLocation"{
+            guard
+                let navigation = segue.destination as? UINavigationController,
+                let controller = navigation.topViewController as? LocationDetailViewController
+            else {return}
+            
+            if let indexPath = tableView.indexPath(for: (sender as! UITableViewCell)){
+                loadFromCoreData()
+                tableView.reloadData()
+                let location = locations[indexPath.row]
+                controller.coord = CLLocationCoordinate2DMake(location.latitude,
+                                                              location.longtitude)
+                controller.managedObjectContext = managedObjectContext
+                controller.date = location.date
+                controller.placemark = location.placemark
+            }
+            
+            
+        }
+    }
     
 }

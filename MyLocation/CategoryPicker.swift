@@ -3,6 +3,7 @@ import UIKit
 class CategoryPickerViewController:UITableViewController{
     
     var selectedCategoryName:String!
+    
     let categories = [
         "Apple Store",
         "Bar",
@@ -10,6 +11,7 @@ class CategoryPickerViewController:UITableViewController{
         "Historic Building",
         "Grocery Store"
     ]
+    
     var selectedIndexPath = IndexPath()
     
     override func viewDidLoad() {
@@ -62,7 +64,6 @@ class CategoryPickerViewController:UITableViewController{
                 let indexPath = tableView.indexPath(for: cell)
             else {return}
             selectedCategoryName = categories[indexPath.row]
-            
         }
     }
     

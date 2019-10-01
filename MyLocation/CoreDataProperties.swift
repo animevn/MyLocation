@@ -1,5 +1,6 @@
 import Foundation
 import CoreData
+import CoreLocation
 
 
 extension Location {
@@ -13,6 +14,6 @@ extension Location {
     @NSManaged public var locationDescription: String
     @NSManaged public var category: String
     @NSManaged public var date: Date
-    @NSManaged public var placemark: NSObject?
+    @NSManaged public var placemark: CLPlacemark?
 
 }

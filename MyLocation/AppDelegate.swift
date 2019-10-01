@@ -59,7 +59,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let locationList = navigation.viewControllers[0] as! LocationsViewController
             locationList.managedObjectContext = managedObjectContext
         }
-        print(appSupportDirectory)
         return true
     }
 

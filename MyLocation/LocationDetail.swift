@@ -11,7 +11,7 @@ class LocationDetailViewController:UITableViewController{
     @IBOutlet weak var lbAddress: UILabel!
     @IBOutlet weak var lbDate: UILabel!
     
-    var coord:CLLocationCoordinate2D!
+    var coord = CLLocationCoordinate2DMake(0, 0)
     var placemark:CLPlacemark!
     var categoryName = "Apple Store"
     var date = Date()
@@ -19,13 +19,16 @@ class LocationDetailViewController:UITableViewController{
     var managedObjectContext:NSManagedObjectContext!
     
     private func updateLabels(){
-        
         tvDescription.text = ""
         lbLatitude.text = String(format: "%.8f", coord.latitude)
         lbLongtitude.text = String(format: "%.8f", coord.longitude)
-        lbAddress.text = string(from: placemark)
-        lbDate.text = format(date: Date())
+        if let placemark = placemark{
+            lbAddress.text = string(from: placemark)
+        }else{
+            lbAddress.text = ""
+        }
         
+        lbDate.text = format(date: Date())
     }
     
     @objc private func hideKeyboard(_ gestureRecognizer: UIGestureRecognizer){

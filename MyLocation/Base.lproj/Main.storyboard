@@ -324,7 +324,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mha-9S-WZG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1911" y="-274"/>
+            <point key="canvasLocation" x="1948" y="-275"/>
         </scene>
         <!--Category Picker View Controller-->
         <scene sceneID="nZl-l4-gdP">
@@ -403,7 +403,7 @@
             </objects>
             <point key="canvasLocation" x="1121.25" y="-274.64788732394368"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Location Favorite-->
         <scene sceneID="efb-D9-NVu">
             <objects>
                 <tableViewController id="Jud-2A-dCn" customClass="LocationsViewController" customModule="MyLocation" customModuleProvider="target" sceneMemberID="viewController">
@@ -449,6 +449,9 @@
                                         <constraint firstItem="gQy-UF-arX" firstAttribute="leading" secondItem="XVd-uZ-W2U" secondAttribute="leading" constant="10" id="qW2-9q-gnr"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="hMv-4J-cSJ" kind="show" identifier="editLocation" id="pIj-Qs-Gef"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -457,12 +460,12 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Location" image="second" id="BXy-IN-wOb"/>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="2Aw-Tu-iJY"/>
+                    <navigationItem key="navigationItem" title="Location Favorite" id="2Aw-Tu-iJY"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yf5-Zm-feP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1337" y="522"/>
+            <point key="canvasLocation" x="1121" y="522"/>
         </scene>
         <!--Location List-->
         <scene sceneID="P5f-vv-2YL">
@@ -486,4 +489,7 @@
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="pIj-Qs-Gef"/>
+    </inferredMetricsTieBreakers>
 </document>
