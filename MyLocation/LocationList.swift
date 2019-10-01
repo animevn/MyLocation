@@ -63,7 +63,7 @@ class LocationsViewController:UITableViewController{
             let controller = navigation.topViewController as! LocationDetailViewController
             let indexPath = sender as! IndexPath
             controller.locationToEdit = locations[indexPath.row]
-            print(indexPath)
+            controller.managedObjectContext = managedObjectContext
         }
     }
     

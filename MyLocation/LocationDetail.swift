@@ -63,12 +63,11 @@ class LocationDetailViewController:UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let location = locationToEdit{
+        if locationToEdit != nil{
             title = "Edit Location"
         }
         
         updateLabels()
-        
         createTapGesture()
         
     }
@@ -84,28 +83,38 @@ class LocationDetailViewController:UITableViewController{
         dismiss(animated: true, completion: nil)
     }
     
-    private func saveLocation(){
-        let location = Location(context: managedObjectContext)
+    private func saveLocation(location:Location){
+        
         location.locationDescription = tvDescription.text
         location.category = categoryName
         location.latitude = coord.latitude
         location.longtitude = coord.longitude
         location.date = date
         location.placemark = placemark
+        
+        do{
+            try managedObjectContext.save()
+            
+        }catch let error{
+            fatalCoreDataError(error: error)
+        }
     }
     
     @IBAction func onDone(_ sender: UIBarButtonItem) {
         let hudView = HudView.hud(view: navigationController!.view, animated: true)
-        hudView.text = "Tagg"
         
-        saveLocation()
-        do{
-            try managedObjectContext.save()
-            executeAfter(seconds: 0.6){
-                self.dismiss(animated: true, completion: nil)
-            }
-        }catch let error{
-            fatalCoreDataError(error: error)
+        let location:Location
+        if let temp = locationToEdit{
+            hudView.text = "Updated"
+            location = temp
+        }else{
+            hudView.text = "Tagg"
+            location = Location(context: managedObjectContext)
+        }
+        saveLocation(location: location)
+        
+        executeAfter(seconds: 0.6){
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
