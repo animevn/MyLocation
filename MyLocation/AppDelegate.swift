@@ -16,8 +16,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
     
     lazy var managedObjectContext:NSManagedObjectContext = persistentContainer.viewContext
-
-
+    
+    func viewControllerShowingAlert()->UIViewController{
+        let rootView = self.window!.rootViewController!
+        if let presentedVC = rootView.presentedViewController{
+            return presentedVC
+        }else{
+            return rootView
+        }
+    }
+    
+    func listenForFatalErrorCoreData(){
+        NotificationCenter.default.addObserver(forName: mySaveDidFailNotification, object: nil, queue: .main, using: {notification in
+            let alert = UIAlertController(
+                title: "Internal Error",
+                message: "There was a fatal error in the app and it cannot continue.\n\n"
+                    + "Press OK to terminate the app. Sorry for the inconvenience.",
+                preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default) { _ in
+                let exception = NSException(
+                    name: NSExceptionName.internalInconsistencyException,
+                    reason: "Fatal Core Data error", userInfo: nil)
+                exception.raise()
+            }
+            alert.addAction(action)
+            self.viewControllerShowingAlert().present(alert, animated: true, completion: nil)
+        })
+    }
+    
+    
+    
+    
     func application(
         _ application:UIApplication,
         didFinishLaunchingWithOptions launchOptions:[UIApplication.LaunchOptionsKey: Any]?) ->Bool{

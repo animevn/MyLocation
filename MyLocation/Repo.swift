@@ -35,3 +35,10 @@ func executeAfter(seconds: Double, completion:@escaping ()->Void){
 let appSupportDirectory:URL = {
     return FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
 }()
+
+let mySaveDidFailNotification = Notification.Name("SaveDidFailNotification")
+
+func fatalCoreDataError(error:Error){
+    print("*** Fatal error: \(error)")
+    NotificationCenter.default.post(name: mySaveDidFailNotification, object: nil)
+}

@@ -81,9 +81,8 @@ class LocationDetailViewController:UITableViewController{
                 self.dismiss(animated: true, completion: nil)
             }
         }catch let error{
-            print(error)
+            fatalCoreDataError(error: error)
         }
-        
     }
     
     @IBAction func pickCategory(_ segue: UIStoryboardSegue){
