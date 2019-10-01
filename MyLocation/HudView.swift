@@ -1,7 +1,7 @@
 import UIKit
 
 class HudView:UIView{
-    var text = ""
+    var text:String = ""
     
     class func hud(view:UIView, animated:Bool)->HudView{
         let hudView = HudView(frame: view.bounds)
@@ -25,8 +25,16 @@ class HudView:UIView{
         filletCorner.fill()
         
         guard let image = UIImage(named: "Checkmark") else {return}
-            let imagePoint = CGPoint(x: center.x - image.size.width/2,
+        let imagePoint = CGPoint(x: center.x - image.size.width/2,
                                      y: center.y - image.size.height/2 - height/8)
-            image.draw(at: imagePoint)
+        image.draw(at: imagePoint)
+        
+        let attribs = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 16),
+                       NSAttributedString.Key.foregroundColor:UIColor.white]
+        let textSize = text.size(withAttributes: attribs)
+        let textPoint = CGPoint(
+            x: center.x - textSize.width/2,
+            y: center.y - textSize.height/2 + height/4)
+        text.draw(at: textPoint, withAttributes: attribs)
     }
 }
