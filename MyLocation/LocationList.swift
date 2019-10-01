@@ -58,25 +58,18 @@ class LocationsViewController:UITableViewController{
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "editLocation"{
-            guard
-                let navigation = segue.destination as? UINavigationController,
-                let controller = navigation.topViewController as? LocationDetailViewController
-            else {return}
-            
-            if let indexPath = tableView.indexPath(for: (sender as! UITableViewCell)){
-                loadFromCoreData()
-                tableView.reloadData()
-                let location = locations[indexPath.row]
-                controller.coord = CLLocationCoordinate2DMake(location.latitude,
-                                                              location.longtitude)
-                controller.managedObjectContext = managedObjectContext
-                controller.date = location.date
-                controller.placemark = location.placemark
-            }
-            
-            
+        if segue.identifier == "locationEdit"{
+            let navigation = segue.destination as! UINavigationController
+            let controller = navigation.topViewController as! LocationDetailViewController
+            let indexPath = sender as! IndexPath
+            controller.locationToEdit = locations[indexPath.row]
+            print(indexPath)
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "locationEdit", sender: indexPath)
+        tableView.deselectRow(at: indexPath, animated: false)
     }
     
 }

@@ -15,11 +15,23 @@ class LocationDetailViewController:UITableViewController{
     var placemark:CLPlacemark!
     var categoryName = "Apple Store"
     var date = Date()
-    
     var managedObjectContext:NSManagedObjectContext!
     
+    var locationToEdit:Location?{
+        didSet{
+            if let location = self.locationToEdit{
+                descriptionText = location.locationDescription
+                categoryName = location.category
+                date = location.date
+                coord = CLLocationCoordinate2DMake(location.latitude, location.longtitude)
+                placemark = location.placemark
+            }
+        }
+    }
+    var descriptionText = ""
+    
     private func updateLabels(){
-        tvDescription.text = ""
+        tvDescription.text = descriptionText
         lbLatitude.text = String(format: "%.8f", coord.latitude)
         lbLongtitude.text = String(format: "%.8f", coord.longitude)
         if let placemark = placemark{
@@ -27,7 +39,7 @@ class LocationDetailViewController:UITableViewController{
         }else{
             lbAddress.text = ""
         }
-        
+        lbCategory.text = categoryName
         lbDate.text = format(date: Date())
     }
     
@@ -40,16 +52,25 @@ class LocationDetailViewController:UITableViewController{
         tvDescription.resignFirstResponder()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        updateLabels()
-        lbCategory.text = categoryName
-        
+    private func createTapGesture(){
         let gestureRecognizer = UITapGestureRecognizer(
             target: self,
             action: #selector(hideKeyboard))
         gestureRecognizer.cancelsTouchesInView = false
         tableView.addGestureRecognizer(gestureRecognizer)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if let location = locationToEdit{
+            title = "Edit Location"
+        }
+        
+        updateLabels()
+        
+        createTapGesture()
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
