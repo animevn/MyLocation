@@ -58,7 +58,8 @@ class LocationDetailViewController:UITableViewController{
     }
     
     @IBAction func onDone(_ sender: UIBarButtonItem) {
-        
+        let hudView = HudView.hud(view: navigationController!.view, animated: true)
+        hudView.text = "Tagg"
     }
     
     @IBAction func pickCategory(_ segue: UIStoryboardSegue){
