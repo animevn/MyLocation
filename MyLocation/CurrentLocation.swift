@@ -27,6 +27,8 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             lbAddress.text = "Searching for place ..."
         }else if geocoderError != nil{
             lbAddress.text = "Error searching for place ..."
+        }else if !isSeachingLocation{
+            lbAddress.text = ""
         }else{
             lbAddress.text = "Place not found"
         }
@@ -159,9 +161,10 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                 }else{
                     self.placemark = nil
                 }
+                self.isReversingGeocoder = false
+                self.updateAddressLabel()
             }
-            self.isReversingGeocoder = false
-            self.updateLabels()
+            
         }
     }
     
@@ -169,12 +172,15 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         guard let newLocation = locations.last else {return}
         if newLocation.timestamp.timeIntervalSinceNow < -5{return}
         if newLocation.horizontalAccuracy < 0{return}
+        
         if location == nil || location!.horizontalAccuracy > newLocation.horizontalAccuracy{
             locationError = nil
             location = newLocation
-            reversingGeocoding(location: newLocation)
+            
             if newLocation.horizontalAccuracy <= manager.desiredAccuracy{
+                reversingGeocoding(location: newLocation)
                 stopLocationManager()
+                updateLabels()
                 updateGetButton()
             }
             
