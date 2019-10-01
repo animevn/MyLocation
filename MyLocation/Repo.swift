@@ -20,3 +20,10 @@ func string(from placemark: CLPlacemark) -> String {
         line2 += s }
     return line1 + "\n" + line2
 }
+
+func format(date:Date)->String{
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateStyle = .medium
+    dateFormatter.timeStyle = .short
+    return dateFormatter.string(from: date)
+}

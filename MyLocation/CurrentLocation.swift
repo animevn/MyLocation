@@ -180,5 +180,18 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "tagLocation"{
+            guard
+                let location = location,
+                let placemark = placemark,
+                let destination = segue.destination as? UINavigationController,
+                let controller = destination.topViewController as? LocationDetailViewController
+            else {return}
+            controller.coord = location.coordinate
+            controller.placemark = placemark
+        }
+    }
 }
 

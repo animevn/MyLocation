@@ -62,8 +62,8 @@
 			children = (
 				F16871B82340976D00CE4069 /* AppDelegate.swift */,
 				F16871BA2340976D00CE4069 /* CurrentLocation.swift */,
-				F16871BC2340976D00CE4069 /* SecondViewVC.swift */,
 				F18BA0472342547F00E4F85B /* LocationDetail.swift */,
+				F16871BC2340976D00CE4069 /* SecondViewVC.swift */,
 				F10EF4382340E33800AC28F9 /* Repo.swift */,
 				F16871BE2340976D00CE4069 /* Main.storyboard */,
 				F16871C32340976E00CE4069 /* Launch.storyboard */,
