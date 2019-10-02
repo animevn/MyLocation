@@ -18,6 +18,8 @@
 		F16871C22340976E00CE4069 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F16871C12340976E00CE4069 /* Assets.xcassets */; };
 		F16871C52340976E00CE4069 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F16871C32340976E00CE4069 /* Launch.storyboard */; };
 		F18BA0482342547F00E4F85B /* LocationDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18BA0472342547F00E4F85B /* LocationDetail.swift */; };
+		F18ED9892344F5A600D0DC55 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F18ED9882344F5A600D0DC55 /* MapKit.framework */; };
+		F18ED98B2344F70400D0DC55 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18ED98A2344F70400D0DC55 /* MapViewController.swift */; };
 		F193F6E22342E173008483F9 /* CategoryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193F6E12342E173008483F9 /* CategoryPicker.swift */; };
 		F193F6E42343050C008483F9 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193F6E32343050C008483F9 /* HudView.swift */; };
 /* End PBXBuildFile section */
@@ -36,6 +38,8 @@
 		F16871C42340976E00CE4069 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Launch.storyboard; sourceTree = "<group>"; };
 		F16871C62340976E00CE4069 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F18BA0472342547F00E4F85B /* LocationDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetail.swift; sourceTree = "<group>"; };
+		F18ED9882344F5A600D0DC55 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		F18ED98A2344F70400D0DC55 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		F193F6E12342E173008483F9 /* CategoryPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPicker.swift; sourceTree = "<group>"; };
 		F193F6E32343050C008483F9 /* HudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -45,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F18ED9892344F5A600D0DC55 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +61,7 @@
 			children = (
 				F16871B72340976D00CE4069 /* MyLocation */,
 				F16871B62340976D00CE4069 /* Products */,
+				F18ED9872344F5A600D0DC55 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,6 +82,7 @@
 				F193F6E12342E173008483F9 /* CategoryPicker.swift */,
 				F193F6E32343050C008483F9 /* HudView.swift */,
 				F11F520123437A0D00585340 /* LocationList.swift */,
+				F18ED98A2344F70400D0DC55 /* MapViewController.swift */,
 				F10EF4382340E33800AC28F9 /* Repo.swift */,
 				F10DAAA223435769002C63D0 /* CoreDataClass.swift */,
 				F10DAAA323435769002C63D0 /* CoreDataProperties.swift */,
@@ -86,6 +93,14 @@
 				F16871C62340976E00CE4069 /* Info.plist */,
 			);
 			path = MyLocation;
+			sourceTree = "<group>";
+		};
+		F18ED9872344F5A600D0DC55 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F18ED9882344F5A600D0DC55 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,6 +135,11 @@
 				TargetAttributes = {
 					F16871B42340976D00CE4069 = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -159,6 +179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F18ED98B2344F70400D0DC55 /* MapViewController.swift in Sources */,
 				F16871B92340976D00CE4069 /* AppDelegate.swift in Sources */,
 				F16871BB2340976D00CE4069 /* CurrentLocation.swift in Sources */,
 				F10DAAA12343569B002C63D0 /* Model.xcdatamodeld in Sources */,

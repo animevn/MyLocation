@@ -44,9 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
     }
     
-    
-    
-    
     func application(
         _ application:UIApplication,
         didFinishLaunchingWithOptions launchOptions:[UIApplication.LaunchOptionsKey: Any]?) ->Bool{
@@ -55,9 +52,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let tabBarViewControllers = controller.viewControllers{
             let currentLocation = tabBarViewControllers[0] as! CurrentLocationViewController
             currentLocation.managedObjectContext = managedObjectContext
+            
             let navigation = tabBarViewControllers[1] as! UINavigationController
             let locationList = navigation.viewControllers[0] as! LocationsViewController
             locationList.managedObjectContext = managedObjectContext
+            
+            let mapView = tabBarViewControllers[2] as! MapViewController
+            mapView.manageObjectContext = managedObjectContext
         }
         return true
     }
@@ -76,7 +77,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
     }
-
-
 }
-

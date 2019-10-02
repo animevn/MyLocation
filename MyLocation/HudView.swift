@@ -49,7 +49,4 @@ class HudView:UIView{
             }
         }
     }
-    
-    
-    
 }
