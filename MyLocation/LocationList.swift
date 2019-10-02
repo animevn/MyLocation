@@ -9,12 +9,15 @@ class LocationsViewController:UITableViewController{
     lazy var fetchedResultController:NSFetchedResultsController<Location> = {
         let fetch = NSFetchRequest<Location>()
         fetch.entity = Location.entity()
-        fetch.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
+        fetch.sortDescriptors = [
+            NSSortDescriptor(key: "category", ascending: true),
+            NSSortDescriptor(key: "date", ascending: true)
+        ]
         fetch.fetchBatchSize = 10
         let fetchedRC = NSFetchedResultsController(
             fetchRequest: fetch,
             managedObjectContext: self.managedObjectContext,
-            sectionNameKeyPath: nil,
+            sectionNameKeyPath: "category",
             cacheName: "Location")
         fetchedRC.delegate = self
         return fetchedRC
@@ -30,6 +33,7 @@ class LocationsViewController:UITableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        navigationItem.rightBarButtonItem = editButtonItem
         NSFetchedResultsController<Location>.deleteCache(withName: "Location")
         loadFromCoreData()
         
@@ -38,6 +42,15 @@ class LocationsViewController:UITableViewController{
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionInfo = fetchedResultController.sections![section]
         return sectionInfo.numberOfObjects
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return fetchedResultController.sections!.count
+    }
+    
+    override func tableView(_ tableView:UITableView, titleForHeaderInSection section:Int)->String?{
+        let sectionInfo = fetchedResultController.sections![section]
+        return sectionInfo.name
     }
     
     private func updateCell(cell:UITableViewCell, location:Location){
