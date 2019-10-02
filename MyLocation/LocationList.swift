@@ -30,6 +30,7 @@ class LocationsViewController:UITableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSFetchedResultsController<Location>.deleteCache(withName: "Location")
         loadFromCoreData()
         
     }
@@ -79,6 +80,21 @@ class LocationsViewController:UITableViewController{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "locationEdit", sender: indexPath)
         tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
+    override func tableView(
+        _ tableView: UITableView,
+        commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete{
+            let location = fetchedResultController.object(at: indexPath)
+            managedObjectContext.delete(location)
+            do{
+                try managedObjectContext.save()
+            }catch{
+                fatalCoreDataError(error: error)
+            }
+        }
     }
     
 }
