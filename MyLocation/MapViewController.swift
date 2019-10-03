@@ -104,8 +104,19 @@ class MapViewController:UIViewController{
 
 extension MapViewController:MKMapViewDelegate{
     
-    @objc private func showLocationDetail(){
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editLocation"{
+            let navigation = segue.destination as! UINavigationController
+            let controller = navigation.topViewController as! LocationDetailViewController
+            controller.managedObjectContext = manageObjectContext
+            let button = sender as! UIButton
+            let location = locations[button.tag]
+            controller.locationToEdit = location
+        }
+    }
+    
+    @objc private func showLocationDetail(sender:UIButton){
+        performSegue(withIdentifier: "editLocation", sender: sender)
     }
     
     

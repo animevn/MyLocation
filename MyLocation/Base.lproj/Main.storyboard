@@ -412,11 +412,12 @@
                     <tabBarItem key="tabBarItem" title="Map" image="Checkmark" id="bmI-QL-rOW"/>
                     <connections>
                         <outlet property="mvMap" destination="dxT-Ha-tqH" id="RiY-K1-0qP"/>
+                        <segue destination="bHG-v0-Nii" kind="show" identifier="editLocation" id="auq-Lc-X1y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DMv-qD-SSN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="270" y="-1013"/>
+            <point key="canvasLocation" x="270" y="-1077"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -543,6 +544,6 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MRb-jo-i7C"/>
+        <segue reference="auq-Lc-X1y"/>
     </inferredMetricsTieBreakers>
 </document>
