@@ -69,7 +69,7 @@ class MapViewController:UIViewController{
             latitude: topLeft.latitude - (topLeft.latitude - bottomRight.latitude)/2,
             longitude: topLeft.longitude - (topLeft.longitude - bottomRight.longitude)/2)
         
-        let extra = 1.1
+        let extra = 1.2
         let span = MKCoordinateSpan(
             latitudeDelta: abs(topLeft.latitude - bottomRight.latitude)*extra,
             longitudeDelta: abs(topLeft.longitude - bottomRight.longitude)*extra)
@@ -100,4 +100,52 @@ class MapViewController:UIViewController{
         }
     }
     
+}
+
+extension MapViewController:MKMapViewDelegate{
+    
+    @objc private func showLocationDetail(){
+        
+    }
+    
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        guard annotation is Location else {return nil}
+        
+        let identifier = "location"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        
+        if annotationView == nil{
+            let pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            pinView.isEnabled = true
+            pinView.canShowCallout = true
+            pinView.animatesDrop = false
+            pinView.pinTintColor = UIColor(red: 0.3, green: 0.8, blue: 0.4, alpha: 1)
+            let rightButton = UIButton(type: .detailDisclosure)
+            rightButton.addTarget(self, action: #selector(showLocationDetail), for: .touchUpInside)
+            pinView.rightCalloutAccessoryView = rightButton
+            annotationView = pinView
+        }
+        
+        if let annotationView = annotationView{
+            annotationView.annotation = annotation
+            
+            let button = annotationView.rightCalloutAccessoryView as! UIButton
+            if let index = locations.firstIndex(of: annotation as! Location){
+                button.tag = index
+            }
+        }
+        return annotationView
+        
+        
+    }
+    
+}
+
+extension MapViewController:UINavigationBarDelegate{
+    
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
+    }
 }
