@@ -385,12 +385,12 @@
                                     <navigationItem title="Title" id="wyA-61-ItS">
                                         <barButtonItem key="leftBarButtonItem" title="Locations" id="mYc-vx-wBA">
                                             <connections>
-                                                <action selector="onLocationsClick:" destination="GC9-bx-IsD" id="Njf-ic-Dqj"/>
+                                                <action selector="onLocationsClick" destination="GC9-bx-IsD" id="CKr-79-zcR"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="User" id="mYR-YC-swa">
                                             <connections>
-                                                <action selector="onUserClick:" destination="GC9-bx-IsD" id="N9k-ff-bEf"/>
+                                                <action selector="onUserClick" destination="GC9-bx-IsD" id="oDR-Bs-Whc"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
