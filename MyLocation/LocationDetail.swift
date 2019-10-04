@@ -137,7 +137,7 @@ class LocationDetailViewController:UITableViewController{
         if indexPath.section == 0 && indexPath.row == 0{
             tvDescription.becomeFirstResponder()
         }else if indexPath.section == 1 && indexPath.row == 0{
-            takePhotoWithCamera()
+            photoPicker()
         }
     }
     
@@ -159,12 +159,49 @@ class LocationDetailViewController:UITableViewController{
 extension LocationDetailViewController:
     UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
-    func takePhotoWithCamera(){
+    private func takePhotoWithCamera(){
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .camera
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    private func takePhotoWithLibrary(){
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
         present(imagePicker, animated: true, completion: nil)
+    }
+    
+    private func showPhotoOptions(){
+        let alertController = UIAlertController(title: nil, message: nil,
+                                                preferredStyle: .actionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        let takePhotoAction = UIAlertAction(title: "Take Photo", style: .default, handler: {_ in
+            self.takePhotoWithCamera()
+        })
+        alertController.addAction(takePhotoAction)
+        
+        let chooseFromLibraryAction = UIAlertAction(title: "Choose From Library",
+                                                    style: .default, handler: {_ in
+            self.takePhotoWithLibrary()
+        })
+        alertController.addAction(chooseFromLibraryAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    private func photoPicker(){
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            showPhotoOptions()
+        }else{
+            takePhotoWithLibrary()
+        }
     }
     
     func imagePickerController(
