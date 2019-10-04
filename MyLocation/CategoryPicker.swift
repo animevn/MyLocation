@@ -42,7 +42,6 @@ class CategoryPickerViewController:UITableViewController{
             cell.accessoryType = .none
         }
         return cell
-        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

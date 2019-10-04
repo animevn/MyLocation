@@ -6,20 +6,23 @@ class MapViewController:UIViewController{
    
     @IBOutlet weak var mvMap:MKMapView!
     
-    @IBAction func onLocationsClick(){
-        let theRegion = region(for: locations)
-        mvMap.setRegion(theRegion, animated: true)
+    var manageObjectContext:NSManagedObjectContext!{
+        didSet{
+            NotificationCenter.default.addObserver(
+                forName: Notification.Name.NSManagedObjectContextObjectsDidChange,
+                object: self.manageObjectContext,
+                queue: .main,
+                using: {notification in
+                    if self.isViewLoaded{
+                        self.updateLocation()
+                    }
+            })
+        }
     }
     
-    @IBAction func onUserClick(){
-        let region = MKCoordinateRegion(center: mvMap.userLocation.coordinate,
-                                        latitudinalMeters: 1000,
-                                        longitudinalMeters: 1000)
-        mvMap.setRegion(region, animated: true)
-    }
-    
-    var manageObjectContext:NSManagedObjectContext!
     var locations = [Location]()
+    let identifier = "location"
+    
     
     private func updateLocation(){
         mvMap.removeAnnotations(locations)
@@ -92,6 +95,19 @@ class MapViewController:UIViewController{
         return mvMap.regionThatFits(region)
     }
     
+    
+    @IBAction func onLocationsClick(){
+        let theRegion = region(for: locations)
+        mvMap.setRegion(theRegion, animated: true)
+    }
+    
+    @IBAction func onUserClick(){
+        let region = MKCoordinateRegion(center: mvMap.userLocation.coordinate,
+                                        latitudinalMeters: 1000,
+                                        longitudinalMeters: 1000)
+        mvMap.setRegion(region, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateLocation()
@@ -119,37 +135,36 @@ extension MapViewController:MKMapViewDelegate{
         performSegue(withIdentifier: "editLocation", sender: sender)
     }
     
+    private func createAnnotationView(annotation:MKAnnotation)->MKAnnotationView{
+        let pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+        pinView.isEnabled = true
+        pinView.canShowCallout = true
+        pinView.animatesDrop = false
+        pinView.pinTintColor = UIColor(red: 0.3, green: 0.8, blue: 0.4, alpha: 1)
+        let rightButton = UIButton(type: .detailDisclosure)
+        rightButton.addTarget(self, action: #selector(showLocationDetail), for: .touchUpInside)
+        pinView.rightCalloutAccessoryView = rightButton
+        return pinView
+    }
+    
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         guard annotation is Location else {return nil}
-        
-        let identifier = "location"
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
         
         if annotationView == nil{
-            let pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            pinView.isEnabled = true
-            pinView.canShowCallout = true
-            pinView.animatesDrop = false
-            pinView.pinTintColor = UIColor(red: 0.3, green: 0.8, blue: 0.4, alpha: 1)
-            let rightButton = UIButton(type: .detailDisclosure)
-            rightButton.addTarget(self, action: #selector(showLocationDetail), for: .touchUpInside)
-            pinView.rightCalloutAccessoryView = rightButton
-            annotationView = pinView
+            annotationView = createAnnotationView(annotation: annotation)
         }
         
         if let annotationView = annotationView{
             annotationView.annotation = annotation
-            
             let button = annotationView.rightCalloutAccessoryView as! UIButton
             if let index = locations.firstIndex(of: annotation as! Location){
                 button.tag = index
             }
         }
         return annotationView
-        
-        
     }
     
 }

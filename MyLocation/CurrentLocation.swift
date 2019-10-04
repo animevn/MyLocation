@@ -165,7 +165,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                 self.isReversingGeocoder = false
                 self.updateAddressLabel()
             }
-            
         }
     }
     
@@ -184,7 +183,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                 updateLabels()
                 updateGetButton()
             }
-            
         }
     }
     

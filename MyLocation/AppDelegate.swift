@@ -27,7 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func listenForFatalErrorCoreData(){
-        NotificationCenter.default.addObserver(forName: mySaveDidFailNotification, object: nil, queue: .main, using: {notification in
+        NotificationCenter.default.addObserver(forName: mySaveDidFailNotification,
+                                               object: nil,
+                                               queue: .main,
+                                               using: {notification in
             let alert = UIAlertController(
                 title: "Internal Error",
                 message: "There was a fatal error in the app and it cannot continue.\n\n"
