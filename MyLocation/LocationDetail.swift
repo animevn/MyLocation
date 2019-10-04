@@ -124,7 +124,8 @@ class LocationDetailViewController:UITableViewController{
         lbCategory.text = categoryName
     }
     
-    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+    override func tableView(_ tableView: UITableView,
+                            willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if indexPath.section == 0 || indexPath.section == 1{
             return indexPath
         }else{
@@ -135,6 +136,8 @@ class LocationDetailViewController:UITableViewController{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 && indexPath.row == 0{
             tvDescription.becomeFirstResponder()
+        }else if indexPath.section == 1 && indexPath.row == 0{
+            takePhotoWithCamera()
         }
     }
     
@@ -152,3 +155,46 @@ class LocationDetailViewController:UITableViewController{
         
     }
 }
+
+extension LocationDetailViewController:
+    UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
+    func takePhotoWithCamera(){
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
