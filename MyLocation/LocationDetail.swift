@@ -10,7 +10,10 @@ class LocationDetailViewController:UITableViewController{
     @IBOutlet weak var lbLongtitude: UILabel!
     @IBOutlet weak var lbAddress: UILabel!
     @IBOutlet weak var lbDate: UILabel!
+    @IBOutlet weak var lbAddPhoto: UILabel!
+    @IBOutlet weak var ivImage: UIImageView!
     
+    var image:UIImage?
     var coord = CLLocationCoordinate2DMake(0, 0)
     var placemark:CLPlacemark!
     var categoryName = "Apple Store"
@@ -137,6 +140,7 @@ class LocationDetailViewController:UITableViewController{
         if indexPath.section == 0 && indexPath.row == 0{
             tvDescription.becomeFirstResponder()
         }else if indexPath.section == 1 && indexPath.row == 0{
+            tableView.deselectRow(at: indexPath, animated: true)
             photoPicker()
         }
     }
@@ -149,6 +153,12 @@ class LocationDetailViewController:UITableViewController{
             lbAddress.sizeToFit()
             lbAddress.frame.origin.x = view.bounds.size.width - lbAddress.frame.size.width - 15
             return lbAddress.frame.size.height + 20
+        }else if indexPath.section == 1 && indexPath.row == 0{
+            if ivImage.isHidden{
+                return 50
+            }else{
+                return 280
+            }
         }else{
             return 44
         }
@@ -204,10 +214,21 @@ extension LocationDetailViewController:
         }
     }
     
+    private func show(image:UIImage){
+        ivImage.image = image
+        ivImage.isHidden = false
+        ivImage.frame = CGRect(x: 10, y: 10, width: 250, height: 250)
+        lbAddPhoto.isHidden = true
+    }
+    
     func imagePickerController(
         _ picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
+        image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
+        if let image = image{
+            show(image: image)
+        }
+        tableView.reloadData()
         dismiss(animated: true, completion: nil)
     }
     

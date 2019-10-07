@@ -166,7 +166,6 @@ extension MapViewController:MKMapViewDelegate{
         }
         return annotationView
     }
-    
 }
 
 extension MapViewController:UINavigationBarDelegate{

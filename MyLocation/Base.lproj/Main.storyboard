@@ -184,12 +184,19 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d3I-KH-rqd">
+                                                    <rect key="frame" x="10" y="0.0" width="266" height="43.5"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="d3I-KH-rqd" secondAttribute="trailing" constant="10" id="7sf-Vm-Efy"/>
                                                 <constraint firstItem="f9x-HI-2mq" firstAttribute="top" secondItem="bgT-Vh-mhq" secondAttribute="topMargin" id="H1g-m5-XCk"/>
+                                                <constraint firstItem="d3I-KH-rqd" firstAttribute="leading" secondItem="bgT-Vh-mhq" secondAttribute="leading" constant="10" id="PN8-ey-G7i"/>
+                                                <constraint firstAttribute="bottom" secondItem="d3I-KH-rqd" secondAttribute="bottom" id="WZx-KR-Sg6"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="f9x-HI-2mq" secondAttribute="trailing" constant="20" symbolic="YES" id="f2k-j0-B1J"/>
+                                                <constraint firstItem="d3I-KH-rqd" firstAttribute="top" secondItem="bgT-Vh-mhq" secondAttribute="top" id="g4V-4v-UeT"/>
                                                 <constraint firstItem="f9x-HI-2mq" firstAttribute="leading" secondItem="bgT-Vh-mhq" secondAttribute="leadingMargin" id="kBh-6e-dDv"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="f9x-HI-2mq" secondAttribute="bottom" id="p1W-Xb-lD0"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="f9x-HI-2mq" secondAttribute="trailing" constant="20" symbolic="YES" id="xz1-X6-Q6w"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -314,6 +321,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="ivImage" destination="d3I-KH-rqd" id="lVI-4B-ev6"/>
+                        <outlet property="lbAddPhoto" destination="f9x-HI-2mq" id="QBR-uv-q1E"/>
                         <outlet property="lbAddress" destination="dv0-Y5-uMl" id="8Z4-eL-w5A"/>
                         <outlet property="lbCategory" destination="LUQ-wz-j6k" id="xyh-a4-c1b"/>
                         <outlet property="lbDate" destination="h2r-hN-1H0" id="H7d-VJ-NaY"/>
@@ -324,7 +333,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mha-9S-WZG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1832" y="-276"/>
+            <point key="canvasLocation" x="1831.875" y="-276.76056338028167"/>
         </scene>
         <!--Category Picker View Controller-->
         <scene sceneID="nZl-l4-gdP">
